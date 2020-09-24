@@ -14,11 +14,12 @@ pipeline {
                 script {
                     def mavenPom = readMavenPom file: 'pom.xml'
                     nexusArtifactUploader artifacts: [
-                    [
+                        [
                         artifactId: 'simple-app', 
                         classifier: '', 
-                        file: 'target/simple-app-${mavenPom.version}.war', 
-                        type: 'war']
+                        file: "target/simple-app-${mavenPom.version}.war", 
+                        type: 'war'
+                        ]
                     ], 
                     credentialsId: 'nexus3', 
                     groupId: 'in.javahome', 
@@ -26,7 +27,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'repositorio1', 
-                    version: '${mavenPom.version}'
+                    version: "${mavenPom.version}"
                 }
             }
         }
